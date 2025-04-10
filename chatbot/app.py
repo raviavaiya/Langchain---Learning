@@ -1,4 +1,3 @@
-from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_community.llms import Ollama
@@ -28,8 +27,10 @@ input_text=st.text_input("Search the topic u want")
 # ollama LLAma2 LLm 
 llm=Ollama(model="mistral:7b-instruct-v0.3-q2_K")
 output_parser=StrOutputParser()
+
 #chain
 chain=prompt|llm|output_parser
 
+#Chain Running
 if input_text:
     st.write(chain.invoke({"question":input_text}))
